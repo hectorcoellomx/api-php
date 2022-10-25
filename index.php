@@ -1,6 +1,7 @@
 <?php 
 
-require './config/Response.php';
+require './Helper/functions.php';
+require './Config/Response.php';
 
 use App\Config\Response;
 
@@ -15,7 +16,16 @@ if($_GET['route']=="index.php"){
     exit;
 }
 
-$route = explode('/', $_GET['route']);
+//$ContentType = getallheaders();
 
-echo json_encode(Response::error(400, null, "Invalid path"));
-exit;
+$route = explode('/', $_GET['route']);
+$controllers = array('product');
+
+if($route[0]=="api" && isset($route[1]) && in_array( $route[1], $controllers)){
+    
+    require './routes/' .$route[1]. '.php';
+
+}else{
+    echo json_encode(Response::error(400, null, "Invalid path"));
+    exit;
+}
