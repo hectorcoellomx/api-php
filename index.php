@@ -1,6 +1,6 @@
 <?php 
 
-require './Config/Response.php';
+require './config/Response.php';
 
 use App\Config\Response;
 
