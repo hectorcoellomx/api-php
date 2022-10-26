@@ -16,8 +16,6 @@ if($_GET['route']=="index.php"){
     exit;
 }
 
-//$ContentType = getallheaders();
-
 $route = explode('/', $_GET['route']);
 $controllers = array('product');
 

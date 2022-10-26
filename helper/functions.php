@@ -5,7 +5,4 @@ function param($pos){
     return isset($params[$pos]) ? $params[$pos] : "";
 }
 
-function route($route, $method){
-    return ($route == $_GET['route'] && strtolower($_SERVER['REQUEST_METHOD']) == $method);
-}
 

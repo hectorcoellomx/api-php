@@ -1,40 +1,18 @@
 <?php
 
+require './config/Route.php';
 require './controllers/ProductController.php';
 
 use App\Config\Response;
+use App\Config\Route;
 use App\Controllers\ProductController;
 
 
-if( route("api/product", "get") ){
-    $app = new ProductController();
-    return $app->index();
-    exit;
-}
-
-if( route("api/product/" . param(1), "get") ){
-    $app = new ProductController();
-    return $app->show(param(1));
-    exit;
-}
-
-if( route("api/product", "post") ){
-    $app = new ProductController();
-    return $app->store();
-    exit;
-}
-
-if( route("api/product/" . param(1), "put") ){
-    $app = new ProductController();
-    return $app->update(param(1));
-    exit;
-}
-
-if( route("api/product/" . param(1), "delete") ){
-    $app = new ProductController();
-    return $app->destroy(param(1));
-    exit;
-}
+Route::middleware('token')->get("api/product", ProductController::index());
+Route::get("api/product/" . param(1), ProductController::show());
+Route::post("api/product", ProductController::store());
+Route::put("api/product/" . param(1), ProductController::update());
+Route::delete("api/product/" . param(1), ProductController::destroy());
 
 
 echo json_encode(Response::error(400, null, "Invalid path"));
