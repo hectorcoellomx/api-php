@@ -15,6 +15,7 @@ class TokenAuth {
 
     private $key= 'ejemplo-de-llave';
     private $setValid = false;
+    private $token = "";
 
     public function __construct($newKey="") {
 		if($newKey!=""){
@@ -50,7 +51,7 @@ class TokenAuth {
             $this->token = $token;
         }
 		
-		if($this->token==""){
+		if($token==""){
 			return array('val' => 0, 'det' => '0000');
 		}
 
