@@ -8,7 +8,7 @@ use App\Config\Route;
 use App\Controllers\ProductController;
 
 
-Route::get("api/product", ProductController::index(), ['token']);
+Route::get("api/product", ProductController::index(), ['token', 'test']);
 Route::get("api/product/" . param(1), ProductController::show(), ['token']);
 Route::post("api/product", ProductController::store(), ['token']);
 Route::put("api/product/" . param(1), ProductController::update(), ['token']);

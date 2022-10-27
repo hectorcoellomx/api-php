@@ -3,7 +3,10 @@
 namespace App\Config;
 
 require './middleware/token.php';
+require './middleware/test.php';
+
 use App\middleware\Token;
+use App\middleware\Test;
 
 class Route {
 
@@ -48,6 +51,8 @@ class Route {
         
         if($name=="token"){
             Token::handle();
+        }elseif($name=="test"){
+            Test::handle();
         }else{
             exit;
         }

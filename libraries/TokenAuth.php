@@ -14,7 +14,7 @@ namespace App\Libraries;
 class TokenAuth {
 
     private $key= 'ejemplo-de-llave';
-    private $setValid = false;
+    private $setValid = true;
     private $token = "";
 
     public function __construct($newKey="") {

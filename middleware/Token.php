@@ -11,8 +11,6 @@ class Token {
 
     public static function handle()
     {
-        $valid = true;
-
         $tokenAuth = new TokenAuth();
         $val = $tokenAuth->validate( input('tk') , false);
         $valid = ($val['val']==1);
@@ -23,7 +21,7 @@ class Token {
             exit;
         }
 
-        return $valid;
+        return true;
 
     }
 
