@@ -1,11 +1,11 @@
 <?php 
 
 require './Helper/functions.php';
-require './libraries/TokenAuth.php';
 require './Config/Response.php';
+// require './libraries/TokenAuth.php';
 
 use App\Config\Response;
-use App\Libraries\TokenAuth;
+//use App\Libraries\TokenAuth;
 
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, PUT, POST, PATCH, DELETE');

@@ -27,7 +27,7 @@ class TokenAuthFirebase {
         return JWT::encode( $payload, $this->key, 'HS256' );
     }
 
-    function validate($token, $byname=true, $idus=""){
+    function data($token, $byname=true, $idus=""){
         if($byname){
             $token = isset(getallheaders()[$token]) ? getallheaders()[$token] : '';
         }
