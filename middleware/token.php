@@ -8,7 +8,7 @@ class Token {
 
     public static function valid()
     {
-        $valid = false;
+        $valid = true;
 
         if(!$valid){
             echo json_encode(Response::error(400, null, "Invalid token"));
