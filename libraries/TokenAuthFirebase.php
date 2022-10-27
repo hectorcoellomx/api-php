@@ -5,20 +5,33 @@ namespace App\Libraries;
 require( "vendor/autoload.php" );
 
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class TokenAuthFirebase {
 
-    public function validate(){
-        $key = 'ECC4E54DBA738857B84A7EBC6B5DC7187B8DA68750E88AB53AAA41F548D6F2SYSW3B';
+    private $key= 'ejemplo-de-llave';
+
+    public function generate($id, $email, $data="", $duracion=1){
+        
+        $time = time();
 	
         $payload = [      
-            "Referencia" => "411010A120102X269536545236",
-            "IdReferencia" => 2542695,
-            "Total" => 115,
-            "Cliente" => "oDIANA BERENICE VAZQUEZ MORALES",
+            'id' => $id,
+            'email' => $email,
+            'data' => $data,
+            'aud' => @$_SERVER['HTTP_USER_AGENT'],
+            'iat' => $time,
+            'exp' => $time + (3600*$duracion)
         ];
         
-        return JWT::encode( $payload, $key, 'HS256' );
+        return JWT::encode( $payload, $this->key, 'HS256' );
+    }
+
+    function validate($token, $byname=true, $idus=""){
+        if($byname){
+            $token = isset(getallheaders()[$token]) ? getallheaders()[$token] : '';
+        }
+        return JWT::decode($token, new Key($this->key, 'HS256'));
     }
 
 
