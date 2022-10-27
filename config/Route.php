@@ -34,17 +34,11 @@ class Route {
     }
 
     public static function put($route, $method, $middleware = []){
-        if($route == $_GET['route'] && strtolower($_SERVER['REQUEST_METHOD']) == "put"){
-            echo $method;
-            exit;
-        }
+        self::check($route, $method, $middleware, "put");
     }
 
     public static function delete($route, $method, $middleware = []){
-        if($route == $_GET['route'] && strtolower($_SERVER['REQUEST_METHOD']) == "delete"){
-            echo $method;
-            exit;
-        }
+        self::check($route, $method, $middleware, "delete");
     }
 
     public static function middleware($name) {
@@ -56,8 +50,6 @@ class Route {
         }else{
             exit;
         }
-
-        return true;
 
     }
 
