@@ -1,9 +1,11 @@
 <?php 
 
 require './Helper/functions.php';
+require './libraries/TokenAuth.php';
 require './Config/Response.php';
 
 use App\Config\Response;
+use App\Libraries\TokenAuth;
 
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, PUT, POST, PATCH, DELETE');
@@ -12,10 +14,13 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header('Content-Type: application/json'); 
 
 if($_GET['route']=="index.php"){
+    $error_code = null;
     
-    // $res = $tokenAuth->generate(100, "hectorcoello@example.com");
+    //$tokenAuth = new TokenAuth();
+    //$token = $tokenAuth->generate(100, "hectorcoello@example.com");
+    //$error_code = $token;
 
-    echo json_encode(Response::error(400, null, "Invalid path"));
+    echo json_encode(Response::error(400, $error_code, "Invalid path"));
     exit;
     
 }

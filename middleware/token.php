@@ -2,8 +2,6 @@
 
 namespace App\Middleware;
 
-require './libraries/TokenAuth.php';
-
 use App\Config\Response;
 use App\Libraries\TokenAuth;
 
