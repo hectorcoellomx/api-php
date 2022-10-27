@@ -14,7 +14,7 @@ class Token {
         $valid = true;
 
         $tokenAuth = new TokenAuth();
-        $val = $tokenAuth->validate( isset($_GET['tk']) ? $_GET['tk'] : '' , false);
+        $val = $tokenAuth->validate( input('tk') , false);
         $valid = ($val['val']==1);
         
         if(!$valid){
@@ -22,6 +22,8 @@ class Token {
             echo json_encode(Response::error(401, $error_code, $val['det']));
             exit;
         }
+
+        return $valid;
 
     }
 
