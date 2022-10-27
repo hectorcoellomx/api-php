@@ -12,8 +12,12 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header('Content-Type: application/json'); 
 
 if($_GET['route']=="index.php"){
+    
+    // $res = $tokenAuth->generate(100, "hectorcoello@example.com");
+
     echo json_encode(Response::error(400, null, "Invalid path"));
     exit;
+    
 }
 
 $route = explode('/', $_GET['route']);

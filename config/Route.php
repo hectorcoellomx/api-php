@@ -38,7 +38,7 @@ class Route {
     public static function middleware($name) {
         
         if($name=="token"){
-            Token::valid();
+            Token::handle();
         }else{
             exit;
         }
