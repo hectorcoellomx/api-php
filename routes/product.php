@@ -17,4 +17,3 @@ Route::delete("api/product/" . param(1), ProductController::destroy(), ['token']
 
 echo json_encode(Response::error(400, null, "Invalid path"));
 exit;
-
